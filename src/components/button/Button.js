@@ -19,16 +19,17 @@ const ButtonComponent = styled.button`
   border-radius: 2px;
 
   &:hover {
-    background: #0C76B2;
+    background: ${props => props.hoverBackground};
   }
 
   &:active {
-    background: #0B6BA1;
-    box-shadow: none;
+    background: ${props => props.activeBackground};
+    box-shadow: ${props => props.activeBoxShadow};
   }
 
   &:disabled {
     opacity: 0.5;
+    box-shadow: none;
   }
 `
 
@@ -36,17 +37,23 @@ export default function Button(props) {
   const { label, buttonType, onclick } = props
   const { 
     background,
+    hoverBackground,
+    activeBackground,
     color,
     border,
-    boxShadow
+    boxShadow,
+    activeBoxShadow
   } = getButtonTypeStyles(buttonType)
 
   return (
     <ButtonComponent
       color={color}
       background={background}
+      hoverBackground={hoverBackground}
+      activeBackground={activeBackground}
       border={border}
       boxShadow={boxShadow}
+      activeBoxShadow={activeBoxShadow}
       onClick={onclick}
     >{label}</ButtonComponent>
   )
