@@ -42,6 +42,10 @@ const StyledInput = styled.input`
   background: #FFFFFF;
   border: 2px solid #B1B2B4;
   border-radius: 2px;
+
+  &:focus {
+    outline-color: #4BA8DD;
+  }
 `
 
 export default function Input(props) {
@@ -55,7 +59,7 @@ export default function Input(props) {
     <InputContainer>
         <InputWrapper>
           <Label>{label}</Label>
-          <StyledInput placeholder={placeholder !== null ? placeholder : ''} />
+          <StyledInput placeholder={placeholder !== null ? placeholder : ''} type={'text'} />
         </InputWrapper>
         {helperText !== null ? <HelperTextWrapper><HelperText>{helperText}</HelperText></HelperTextWrapper> : null}
     </InputContainer>
