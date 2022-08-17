@@ -1,8 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 import HelperText from './HelperText'
 
 const InputContainer = styled.div`
+  box-sizing: border-box;
+  width: 420px;
   display: flex;
   flex-direction: column;
 `
@@ -42,15 +45,38 @@ const StyledInput = styled.input`
 `
 
 export default function Input(props) {
+  const {
+    label,
+    placeholder,
+    helperText
+  } = props
+
   return (
     <InputContainer>
         <InputWrapper>
-          <Label>Label</Label>
-          <StyledInput placeholder={props.placeholder} />
+          <Label>{label}</Label>
+          <StyledInput placeholder={placeholder !== null ? placeholder : ''} />
         </InputWrapper>
-        <HelperTextWrapper>
-          <HelperText>Here is some text to help.</HelperText>
-        </HelperTextWrapper>
+        {helperText !== null ? <HelperTextWrapper><HelperText>{helperText}</HelperText></HelperTextWrapper> : null}
     </InputContainer>
   )
+}
+
+Input.defaultProps = {
+  label: 'Label'
+}
+
+Input.propTypes = {
+  /**
+   * Text to be used as placeholder
+   */
+  placeholder: PropTypes.string,
+  /**
+   * Text to be used as the input label
+   */
+  label: PropTypes.string.isRequired,
+  /**
+   * If a string is passed to this prop, the component will display the helper text below the input element.
+   */
+  helperText: PropTypes.string
 }
