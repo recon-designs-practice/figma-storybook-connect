@@ -7,7 +7,12 @@ export default {
 
 const Template = (args) => <Input {...args} />
 
-export const InputComponent = Template.bind({})
-InputComponent.args = {
+export const Default = Template.bind({})
+Default.args = {
     placeholder: 'A placeholder'
+}
+
+export const WithHelperText = Template.bind({})
+WithHelperText.args = {
+    placeholder: 'With helper'
 }
